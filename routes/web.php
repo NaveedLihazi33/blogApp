@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $blogPosts = Blog::all();
+    // dd($blogPosts);
+    return view('welcome',[
+        "blogPosts" => $blogPosts
+    ]);
 });

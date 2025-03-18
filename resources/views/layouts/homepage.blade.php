@@ -13,12 +13,35 @@
   <div>
     @include('partials.topMenuBar')
   </div>
+  <div class="blogPostHeader">
+    Blog Posts
+  </div>
   <!-- Main Body where different posts will be shown here -->
   <div class="cardHolder">
+
+    @if ($blogPosts->isEmpty())
+    <div class="noPosts">
+      Oops, There is no post. You might come back later
+    </div>
+    @else
+    @foreach ($blogPosts as $blog )
+    @include('partials.blogPost',['blog' => $blog])
+    @endforeach
+    @endif
+
+
+
+    <!-- @include('partials.blogPost')
+    
     @include('partials.blogPost')
     @include('partials.blogPost')
     @include('partials.blogPost')
     @include('partials.blogPost')
+    @include('partials.blogPost')
+    @include('partials.blogPost')
+    @include('partials.blogPost')
+    @include('partials.blogPost') -->
   </div>
 </body>
+
 </html>

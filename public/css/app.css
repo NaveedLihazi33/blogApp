@@ -60,8 +60,21 @@ body {
   border-radius: 50%;         /* Circular shape */
 }
 
+.blogPostHeader{
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight:bold ;
+}
 
 /* CSS for manin body where different cards will be shown */
+.noPosts{
+  text-align: center;
+  grid-column: 1/-1;
+  font-size: 1.5rem;
+  padding: 2rem;
+}
 .cardHolder{
   padding: 2rem;
   display: grid;
@@ -69,7 +82,7 @@ body {
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
-
+  
 }
 
 .card{
