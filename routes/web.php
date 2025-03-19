@@ -16,16 +16,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[BlogController::class,'index']);
+Route::get('/', [BlogController::class, 'index']);
 
-Route::get('/login',function()
-{
-    return view('/LoginPage');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', function () {
+        return view('/LoginPage');
+    });
+
+    Route::get('/registration', function () {
+        return view('RegistrationPage');
+    });
 });
 
-Route::get('/registration',function()
-{
-    return view('RegistrationPage');
-});
 
-Route::post('/register' , [UserController::class,'register'])->name('register');
+
+
+
+Route::post('/register', [UserController::class, 'register'])->name('register');
+Route::post('/userLogin', [UserController::class, 'login'])->name('userLogin');
+Route::post('/logout', [UserController::class, 'logout'])->name('logout');

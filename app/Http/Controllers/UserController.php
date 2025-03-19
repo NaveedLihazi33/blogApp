@@ -8,6 +8,28 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function login(Request $request)
+    {
+         $request->validate([
+            'emailLogin' => 'required|email',
+            'passwordLogin' => 'required|string|min:6'
+        ]);
+        $credentials = [
+            'email' => $request->emailLogin,
+            'password'=> $request->passwordLogin
+        ];
+
+        if(Auth::attempt($credentials))
+        {
+            $request->session()->regenerate(); // Regenerate session to prevent session fixation
+            return redirect('/')->with('success', 'Login successful!');
+        }
+        return redirect()->back()
+            ->withErrors(['emailLogin' => 'The provided credentials do not match our records.'])
+            ->withInput($request->except('password')); // Return old input except password
+
+
+    }
     public function register(Request $request)
     {
         $validatedData = $request->validate([
@@ -36,4 +58,14 @@ class UserController extends Controller
 
         return redirect('/')->with('success', 'Registration Successfull');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate(); // Invalidate the current session
+        $request->session()->regenerateToken(); // Regenerate CSRF token
+
+        return redirect('/login')->with('success', 'You have been logged out successfully!');
+    }
+
 }
