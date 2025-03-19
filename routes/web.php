@@ -35,3 +35,5 @@ Route::middleware('guest')->group(function () {
 Route::post('/register', [UserController::class, 'register'])->name('register');
 Route::post('/userLogin', [UserController::class, 'login'])->name('userLogin');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/createBlog',[BlogController::class,'create']);
+Route::post('/blogCreate',[BlogController::class,'store'])->name('blogCreate');
