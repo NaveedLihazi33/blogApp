@@ -1,3 +1,2 @@
 @extends('layouts.homepage')
-
-@section('title','Welcome')
+@section('title','My Blog App')

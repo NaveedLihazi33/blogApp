@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $blogPosts = Blog::all();
-    // dd($blogPosts);
-    return view('welcome',[
-        "blogPosts" => $blogPosts
-    ]);
+Route::get('/',[BlogController::class,'index']);
+
+Route::get('/login',function()
+{
+    return view('/LoginPage');
+});
+
+Route::get('/registration',function()
+{
+    return view('RegistrationPage');
 });

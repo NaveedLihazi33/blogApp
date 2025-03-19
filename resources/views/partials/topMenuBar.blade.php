@@ -1,6 +1,3 @@
-
-
-
 <nav class="topMenuParent">
   <!-- App Name div -->
   <div>
@@ -13,10 +10,10 @@
         Posts
       </li>
       <li>
-        Login
+        <a href="/login">Login</a>
       </li>
       <li>
-        SignUp
+        <a href="/registration">SignUp</a>
       </li>
     </ul>
   </div>
@@ -25,5 +22,3 @@
     <!-- Here the image placeholder for the user profile will be used -->
   </div>
 </nav>
-
-
