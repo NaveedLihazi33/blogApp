@@ -1,57 +1,84 @@
-
-
+:root {
+  --menu-bg: #fce3e3; /* Light pinkish background */
+  --text-primary: #333;
+  --accent-color: #ff6b6b;
+  --secondary-bg: #fff;
+  --text-secondary: #888;
+}
 
 .topMenuParent {
   background-color: var(--menu-bg);
-  display: flex;              /* Flexbox for horizontal layout */
-  justify-content: space-between; /* Space out items */
-  align-items: center;        /* Vertically center items */
-  padding: 1rem 2rem;         /* Add some padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Optional: keeps menu at top */
+  top: 0;
+  width: 100%;
+  max-width: 100%; /* Prevents overflow */
+    box-sizing: border-box; /* Includes padding in width */
+  z-index: 1000;
 }
 
-/* App Name Styling */
 .topMenuParent > div:first-child {
   color: var(--text-primary);
-  font-size: 1.5rem;          /* Larger text for app name */
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Navigation Menu Styling */
 .topMenuParent > div:nth-child(2) ul {
-  list-style: none;           /* Remove bullets */
+  list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;              /* Horizontal list */
+  display: flex;
 }
 
 .topMenuParent > div:nth-child(2) li {
   color: var(--text-primary);
-  padding: 0.5rem 1rem;       /* Spacing between items */
-  cursor: pointer;            /* Hand on hover */
-  transition: color 0.3s ease; /* Smooth hover transition */
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
-.topMenuParent > div:nth-child(2) li a{
+.topMenuParent > div:nth-child(2) li a {
   color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.topMenuParent > div:nth-child(2) li a:hover{
+.topMenuParent > div:nth-child(2) li a:hover {
   color: var(--accent-color);
 }
-.topMenuParent > div:nth-child(2) li:hover {
-  color: var(--accent-color); /* Hover effect */
+
+/* User Profile Styling */
+.user-profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes it circular */
+  object-fit: cover; /* Ensures image fits without distortion */
+  border: 2px solid var(--accent-color); /* Optional: adds a border */
+}
+
+.profile-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: var(--text-secondary);
+  border-radius: 50%;
 }
 
 /* User Profile Placeholder Styling */
-.topMenuParent > div:last-child {
-  width: 40px;                /* Placeholder size */
+/* .topMenuParent > div:last-child {
+  width: 40px;               
   height: 40px;
-  background-color: var(--text-secondary); /* Gray placeholder */
-  border-radius: 50%;         /* Circular shape */
-}
+  background-color: var(--text-secondary); 
+  border-radius: 50%;        
+} */
 
 .blogPostHeader{
   justify-content: center;

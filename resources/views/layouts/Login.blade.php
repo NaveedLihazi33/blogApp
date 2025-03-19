@@ -39,6 +39,14 @@
       <button title="Sign In" type="submit" class="sign-in_btn">
         <span>Sign In</span>
       </button>
+
+      <div class="message">
+        Don't have an account?
+      </div>
+      <a class="loginbutton" href="/registration">
+
+        REGISTER
+      </a>
       
     </form>
   </div>

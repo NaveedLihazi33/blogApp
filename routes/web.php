@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\UserController;
 use App\Models\Blog;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,5 @@ Route::get('/registration',function()
 {
     return view('RegistrationPage');
 });
+
+Route::post('/register' , [UserController::class,'register'])->name('register');
