@@ -21,19 +21,26 @@ Route::get('/', [BlogController::class, 'index']);
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
         return view('/LoginPage');
-    });
+    })->name('login');
 
     Route::get('/registration', function () {
         return view('RegistrationPage');
     });
+    Route::post('/register', [UserController::class, 'register'])->name('register');
+    Route::post('/userLogin', [UserController::class, 'login'])->name('userLogin');
 });
 
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/createBlog', [BlogController::class, 'create']);
+    Route::post('/blogCreate', [BlogController::class, 'store'])->name('blogCreate');
+});
 
+Route::get('/blogs/{id}',function($id)
+{
+    $blog = Blog::with('user')->find($id);
+    return view("particularBlog",[
+        "blog"=>$blog
+    ]);
 
-
-
-Route::post('/register', [UserController::class, 'register'])->name('register');
-Route::post('/userLogin', [UserController::class, 'login'])->name('userLogin');
-Route::post('/logout', [UserController::class, 'logout'])->name('logout');
-Route::get('/createBlog',[BlogController::class,'create']);
-Route::post('/blogCreate',[BlogController::class,'store'])->name('blogCreate');
+})->name('showParticularBlog');

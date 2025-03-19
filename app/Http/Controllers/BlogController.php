@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['create','store']);
+    }
     public function create()
     {
         return view('CreateBlog');
@@ -22,7 +22,7 @@ class BlogController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string',
             'description' => 'required|string',
-            'blogPostImage' => 'nullabel|image'
+            'blogPostImage' => 'nullable|image'
         ]);
 
         $description = $validatedData['description'];

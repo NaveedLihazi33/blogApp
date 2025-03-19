@@ -5,7 +5,7 @@
     <!-- Navigation Menu -->
     <div>
         <ul>
-            <li><a href="/posts">Posts</a></li>
+            <li><a href="/">Posts</a></li>
             @guest
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">SignUp</a></li>
@@ -14,6 +14,7 @@
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>
+                <li><a href="/createBlog">Create</a></li>
             @endguest
         </ul>
     </div>
