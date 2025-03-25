@@ -43,7 +43,7 @@ class BlogController extends Controller
         activity()
             ->causedBy(Auth::user())
             ->performedOn($blog)
-            ->log('Blog post created manually');
+            ->log('Blog post created');
 
         return redirect('/')->with('success', 'Blog post created successfully!');
     }
@@ -85,5 +85,40 @@ class BlogController extends Controller
         return view('updateForm',[
             "blog"=>$blog
         ]);
+    }
+    public function update($id, Request $request)
+    {
+        
+        $blog = Blog::where('id',$id)->first();
+        // dd($blog);
+        $validatedData = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'blogPostImage' => 'nullable|image'
+        ]);
+        $description = $validatedData['description'];
+        $subtitle = $this->generateSubtitle($description);
+        $blogPostImageURL = $blog->blogPostImageURL;
+        if ($request->hasFile('blogPostImage')) {
+            $blogPostImageURL = $request->file('blogPostImage')->store('blog_images', 'public');
+        }
+        $blog->update([
+            'title' => $validatedData['title'],
+            'subtitle' => $subtitle,
+            'description' => $description,
+            'blogPostImageURL' => $blogPostImageURL,
+        ]);
+
+        activity()->causedBy(Auth::user())
+        ->performedOn($blog)
+        ->log("Blog Post is edited");
+        return redirect('/');
+    }
+
+    public function delete($id)
+    {
+        $blog = Blog::find($id);
+        $blog->delete();
+        return redirect('/');
     }
 }

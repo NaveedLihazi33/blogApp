@@ -21,7 +21,7 @@
     <div class="buttonHolder">
         @if ($isUserPost) <!-- Note: You used $isUserPost here, should match controller's $isUserPosts -->
             <a href="{{ route('showUpdateForm',$blog->id) }}" class="btn btn-update">Update</a>
-            <form action="#" method="POST" style="display:inline;">
+            <form action="{{ route('deletePost',$blog->id) }}" method="POST" style="display:inline;">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-delete" onclick="return confirm('Are you sure?')">Delete</button>

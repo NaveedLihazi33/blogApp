@@ -113,7 +113,7 @@
             <img src="{{ Storage::url($blog->blogPostImageURL) }}" alt="{{ $blog->title }}" class="form-image">
         @endif
 
-        <form action="#" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('blogupdate',$blog->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 

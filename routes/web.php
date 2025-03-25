@@ -42,9 +42,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/blogCreate', [BlogController::class, 'store'])->name('blogCreate');
     Route::get('/viewUserPost',[BlogController::class,'showParticularUserPost'])->name('particularUserBlogPost');
     Route::get('/update/{id}',[BlogController::class,'showUpdateForm'])->name('showUpdateForm');
+    Route::put('/blogupdate/{id}',[BlogController::class,'update'])->name('blogupdate');
+    Route::delete('/deletePost/{id}',[BlogController::class,'delete'])->name('deletePost');
 });
 
-Route::get('/blogs/{id}',function($id)
+Route::get('/blogs/{blog}',function($id)
 {
     $blog = Blog::with('user')->find($id);
     return view("particularBlog",[
