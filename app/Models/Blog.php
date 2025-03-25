@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Blog extends Model
 {
@@ -15,6 +17,12 @@ class Blog extends Model
         'blogPostImageURL',
         'user_id'
     ];
+
+    // public function getActivitylogOptions()
+    // {
+    //     return LogOptions::defaults()->logFillable();
+    // }
+    
 
     public function user()
     {

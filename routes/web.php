@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [UserController::class, 'logout'])->name('logout');
     Route::get('/createBlog', [BlogController::class, 'create']);
     Route::post('/blogCreate', [BlogController::class, 'store'])->name('blogCreate');
+    Route::get('/viewUserPost',[BlogController::class,'showParticularUserPost'])->name('particularUserBlogPost');
 });
 
 Route::get('/blogs/{id}',function($id)

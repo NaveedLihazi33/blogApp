@@ -12,6 +12,9 @@
                 <li><a href="/import">Excel</a>   </li>
             @else
                 <li><a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                <li>    
+                    <a href="/viewUserPost">My Posts</a>
+                </li>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">
                     @csrf
                 </form>

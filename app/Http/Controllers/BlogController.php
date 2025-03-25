@@ -10,7 +10,7 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['create','store']);
+        $this->middleware('auth')->only(['create', 'store']);
     }
     public function create()
     {
@@ -39,11 +39,16 @@ class BlogController extends Controller
             'blogPostImageURL' => $blogPostImageURL,
             'user_id' => Auth::id(), // Automatically set to the logged-in user's ID
         ]);
+        // Manual logging test
+        activity()
+            ->causedBy(Auth::user())
+            ->performedOn($blog)
+            ->log('Blog post created manually');
 
         return redirect('/')->with('success', 'Blog post created successfully!');
     }
 
-    private function generateSubtitle($description,$wordCount = 10)
+    private function generateSubtitle($description, $wordCount = 10)
     {
         // Split the description into words
         $words = explode(' ', trim($description));
@@ -51,6 +56,14 @@ class BlogController extends Controller
         $subtitleWords = array_slice($words, 0, $wordCount);
         // Join the words back into a string
         return implode(' ', $subtitleWords);
+    }
+
+    public function showParticularUserPost()
+    {
+        $blogPosts = Blog::where('user_id',Auth::id())->get();
+        return view('welcome',[
+            "blogPosts" => $blogPosts,
+        ]);
     }
 
 
