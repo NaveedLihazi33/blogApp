@@ -9,6 +9,7 @@
             @guest
                 <li><a href="/login">Login</a></li>
                 <li><a href="/register">SignUp</a></li>
+                <li><a href="/import">Excel</a>   </li>
             @else
                 <li><a href="/logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
                 <form id="logout-form" action="/logout" method="POST" style="display: none;">

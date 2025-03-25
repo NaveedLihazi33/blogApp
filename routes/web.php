@@ -17,6 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BlogController::class, 'index']);
+Route::get('/export',[UserController::class,'export']);
+Route::get('/import',function()
+{
+    return view('import');
+});
+Route::post('/import-users', [UserController::class, 'import'])->name('users.import');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', function () {
