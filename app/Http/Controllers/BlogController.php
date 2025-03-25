@@ -119,6 +119,9 @@ class BlogController extends Controller
     {
         $blog = Blog::find($id);
         $blog->delete();
+        activity()->causedBy(Auth::user())
+        ->performedOn($blog)
+        ->log("Blog Post is deleted");
         return redirect('/');
     }
 }
