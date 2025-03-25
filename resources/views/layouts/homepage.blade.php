@@ -28,6 +28,8 @@
     @include('partials.blogPost',['blog' => $blog])
     @endforeach
     @endif
+    
+
   </div>
 </body>
 

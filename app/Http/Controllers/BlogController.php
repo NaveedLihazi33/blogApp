@@ -63,6 +63,7 @@ class BlogController extends Controller
         $blogPosts = Blog::where('user_id',Auth::id())->get();
         return view('welcome',[
             "blogPosts" => $blogPosts,
+            "isUserPost" => true
         ]);
     }
 
@@ -72,7 +73,17 @@ class BlogController extends Controller
         $blogPosts = Blog::with('user')->get();
         // dd($blogPosts);
         return view('welcome', [
-            "blogPosts" => $blogPosts
+            "blogPosts" => $blogPosts,
+            "isUserPost" => false
+        ]);
+    }
+
+    public function showUpdateForm($id)
+    {
+        $blog = Blog::with('user')->find($id);
+
+        return view('updateForm',[
+            "blog"=>$blog
         ]);
     }
 }

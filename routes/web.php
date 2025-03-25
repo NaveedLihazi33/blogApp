@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/createBlog', [BlogController::class, 'create']);
     Route::post('/blogCreate', [BlogController::class, 'store'])->name('blogCreate');
     Route::get('/viewUserPost',[BlogController::class,'showParticularUserPost'])->name('particularUserBlogPost');
+    Route::get('/update/{id}',[BlogController::class,'showUpdateForm'])->name('showUpdateForm');
 });
 
 Route::get('/blogs/{id}',function($id)

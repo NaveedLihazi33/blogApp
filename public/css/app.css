@@ -104,6 +104,7 @@
   margin: 0 auto;
   
 }
+/* Existing CSS (unchanged) */
 .card {
   width: 250px;
   background: var(--secondary-bg);
@@ -116,13 +117,13 @@
   width: 100%;
   height: 180px;
   border-radius: 6px 6px 0 0;
-  overflow: hidden; /* Ensures image doesn’t overflow */
+  overflow: hidden;
 }
 
 .card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image fills the space nicely */
+  object-fit: cover;
 }
 
 .card-image:hover {
@@ -132,7 +133,7 @@
 .image-placeholder {
   width: 100%;
   height: 100%;
-  background-color: rgb(200, 200, 200); /* Slightly darker placeholder */
+  background-color: rgb(200, 200, 200);
 }
 
 .category {
@@ -187,9 +188,47 @@
   cursor: pointer;
 }
 
-.read-more-btn{
+.read-more-btn {
   color: chocolate;
   padding: 2em;
-  
 }
 
+/* New CSS for Buttons */
+.buttonHolder {
+  padding: 10px 7px; /* Consistent with .heading padding */
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  justify-content: flex-start; /* Align buttons to the left */
+}
+
+.btn {
+  padding: 6px 12px; /* Comfortable size */
+  font-size: 0.9em; /* Slightly larger than description text */
+  font-weight: 500; /* Matches subtitle weight */
+  text-align: center;
+  border-radius: 4px; /* Slightly less than card’s 6px for subtlety */
+  text-decoration: none; /* For <a> tags */
+  border: none; /* For <button> tags */
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease; /* Smooth hover effects */
+}
+
+.btn-update {
+  background-color: rgb(63, 121, 230); /* Matches .category color for consistency */
+  color: white;
+}
+
+.btn-update:hover {
+  background-color: rgb(45, 100, 200); /* Darker shade on hover */
+  transform: scale(1.05); /* Slight grow effect */
+}
+
+.btn-delete {
+  background-color: rgb(230, 63, 63); /* Complementary red for delete */
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: rgb(200, 45, 45); /* Darker red on hover */
+  transform: scale(1.05); /* Slight grow effect */
+}
